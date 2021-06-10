@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Login
+
+
+{% endblock %}
+
+{% block css %}
+
+<style>   
+    label {
+        font-weight: bold;
+    }
+    
+    Body {  
+      font-family: Calibri, Helvetica, sans-serif;  
+      background-color:burlywood;  
+    }  
+    button {   
+           background-color: white;   
+           width: 10%;  
+            color: black;   
+            padding: 15px;   
+            margin: 10px 0px;   
+            border: none;   
+            cursor: pointer;   
+             }   
+
+     input[type=email], input[type=password], input[type=text] {   
+            width: 25%;   
+            margin: 8px 0;  
+            padding: 12px 20px;   
+            display: inline-block;   
+            border: 2px solid black;   
+            box-sizing: border-box;   
+        }  
+     button:hover {   
+            opacity: 0.7;   
+        }   
+
+     .container {   
+            padding: 25px;   
+            background-color:brown;  
+        }   
+    </style>   
+
+{% endblock %}
+
+
+{% block js %}
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        }
+        else
+        {
+            x.type = "password";
+        }
+    }
+
+    function matchPassword() {  
+        var pw1 = document.getElementById("pswd1").value;  
+        var pw2 = document.getElementById("pswd2").value;  
+        if(pw1 != pw2)  
+        {   
+            alert("Passwords did not match");
+            document.getElementById("pswd1").value = '';
+            document.getElementById("pswd2").value = '';
+            event.preventDefault(); 
+            // returnToPreviousPage(); 
+            return false;
+        }
+        else{
+            // returnToNextPage(); 
+            return true;
+        }
+}  
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+{% if error %}
+    <p class=error><strong>Error:</strong> {{ error }} </p>
+{% endif %}
+
+
+<center><h1> Sign Up</h1></center>   
+<form action="/signup" method="POST" onsubmit = "matchPassword()">  
+    <div class="container">   
+
+        <center><label>First Name : </label>   
+            <input type="text" placeholder="Enter your First Name " name="fname" required></center> 
+        
+        <center><label>Last Name: </label>   
+            <input type="text" placeholder="Enter your Last Name" name="lname" required></center> 
+        
+        <center><label>User Name: </label>   
+            <input type="text" placeholder="Enter your User Name" name="uname" required></center>
+
+        <center><label>Email Id : </label>   
+        <input type="email" placeholder="Enter your mail id" name="email" required></center> 
+
+        <input type="hidden" name="role" value="user">
+
+        <center><label for="psw">Password : </label> 
+        <input type="password" placeholder="Enter Password" id="pswd1" name="password" required></br></center>
+
+        <center><label for="psw">Re-enter Password : </label> 
+            <input type="password" placeholder="Re-Enter Password" id="pswd2" name="rpassword" required></br></center>
+
+        <center><button type="submit">Create</button> </center> 
+
+    </div>
+</form>
+
+
+{% endblock %}

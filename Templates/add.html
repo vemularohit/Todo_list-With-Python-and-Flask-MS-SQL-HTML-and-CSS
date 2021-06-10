@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD</title>
+</head>
+<body>
+
+    <center>
+        <h1>
+            Add Item Here
+        </h1>
+    </center>
+    <form action="/add" method="POST">
+    <div class="container"> 
+        
+
+        <center><label>Item : </label>   
+            <input type="text" placeholder="Enter Item" name="item" ></center>
+
+            <input type="hidden" name="role" value="user">
+
+
+        <br><center><button type="submit">Add</button> </center>       
+        
+    </div>
+
+    <center><br><a href="{{ url_for('logout') }} ">Logout</a></center>
+</body>
+</html>

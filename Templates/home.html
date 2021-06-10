@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+<body>
+<center><h1>To Do List</h1></center>
+
+
+<br><center><a href='/add'><button class="GFG">Add</button></a> </center><br><br>
+
+
+<center>
+<table>
+    <tr>
+        <th>USER_ID/ITEM</th>
+      </tr>
+    {% if data %}
+        {%for i in data%}
+        <tr>
+            <td>{{ i.userId,   i.item }}</td>
+            
+            <td><a href={{ url_for('update', todo = i.ID ) }}><button class="GFG">Update</button></a></td>
+
+            <td><a href={{ url_for('delete', todo = i.ID ) }}><button class="GFG">Delete</button></a></td>                    
+        </tr>
+        {%endfor%}
+    {% endif %}   
+
+</table>
+</center>
+<br>
+<br>
+<br>
+<br>
+<center><br><a href="{{ url_for('logout') }} ">Logout</a></center>
+</body>
+</html>

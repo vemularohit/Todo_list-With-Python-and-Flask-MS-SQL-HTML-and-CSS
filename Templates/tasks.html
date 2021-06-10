@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+<body>
+<center><h1>Welcome Admin</h1></center>
+<center><h1>All Users Tasks</h1></center>
+
+<center>
+<table>
+    <tr>
+        <th>USER_ID/ITEM</th>
+      </tr>
+    {% if tasks %}
+        {%for i in tasks%}
+        <tr>
+            <td>{{ i.userId, i.item }}</td> 
+
+            <td><a href={{ url_for('updatetaskbyadmin', todo = i.ID ) }}><button class="GFG">Update</button></a></td>
+
+            <td><a href={{ url_for('deltaskbyadmin', todo = i.ID ) }}><button class="GFG">Delete</button></a></td>          
+        </tr>
+        {%endfor%}
+    {% endif %}   
+
+</table>
+
+<br><br>
+<a href="{{ url_for('admin_home') }} ">Click here to View USERS</a>
+
+</center>
+
+<br>
+<center><br><a href="{{ url_for('logout') }} ">Logout</a></center>
+</body>
+</html>
